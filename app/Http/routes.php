@@ -1,6 +1,10 @@
 <?php
 
-
+/**
+* Exercícios
+* 1. Comentar o código com o seu entendimento sobre como as coisas são feitas
+* 2. Desenvolver uma segunda funcionalidade, identica à primeira. Anotar as dúvidas.
+*/
 
 /**
 * Jobs

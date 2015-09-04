@@ -48,8 +48,8 @@
 			<td>{!! $job->jobs_cliente !!} </td>
 			<td>{!! $job->jobs_responsavel !!} </td>
 			<td width="1%" nowrap>
-				<a href="/jobs/{!! $job->id !!}/editar">editar</a> |
-				<a href="/jobs/{!! $job->id !!}/excluir" class="excluir-job">excluir</a>
+				<a href="{!! route('jobs.edit', $job->id) !!}">editar</a> |
+				<a href="{!! route('jobs.destroy', $job->id) !!}" class="excluir-job">excluir</a>
 			</td>
 		</tr>
 	@endforeach
