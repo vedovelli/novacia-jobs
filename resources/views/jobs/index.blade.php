@@ -12,7 +12,7 @@
 		<h2>Nova Cia <small>Controle de Jobs</small></h2>
 	</div>
 	<div class="col-md-6 text-right">
-		<a href="/jobs/novo" class="btn btn-primary">Novo</a>
+		<a href="{!! route('jobs.create') !!}" class="btn btn-primary">Novo</a>
 	</div>
 </div>
 
@@ -64,18 +64,18 @@
 @stop
 
 @section('scripts')
-@parent
-<script>
-	$(document).ready(function()
-	{
-		$('body').on('click', '.excluir-job', function(ev)
+	@parent
+	<script>
+		$(document).ready(function()
 		{
-			var confirm = window.confirm('Tem certeza que deseja remover o job?');
-			if(!confirm)
+			$('body').on('click', '.excluir-job', function(ev)
 			{
-				ev.preventDefault();
-			}
+				var confirm = window.confirm('Tem certeza que deseja remover o job?');
+				if(!confirm)
+				{
+					ev.preventDefault();
+				}
+			});
 		});
-	});
-</script>
+	</script>
 @stop

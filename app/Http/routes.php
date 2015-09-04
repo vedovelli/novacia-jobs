@@ -1,14 +1,19 @@
 <?php
 
+
+
 /**
 * Jobs
 */
-Route::get('/jobs', ['uses' => 'JobsController@index']);
-Route::get('/jobs/novo', ['uses' => 'JobsController@create']);
-Route::get('/jobs/{id}/editar', ['uses' => 'JobsController@edit']);
-Route::post('/jobs/{id}/atualizar', ['uses' => 'JobsController@update']);
-Route::get('/jobs/{id}/excluir', ['uses' => 'JobsController@destroy']);
-Route::post('/jobs/inserir', ['uses' => 'JobsController@store']);
+Route::group(['prefix' => 'jobs'], function()
+{
+    Route::get('', ['as' => 'jobs.index', 'uses' => 'JobsController@index']);
+    Route::get('novo', ['as' => 'jobs.create', 'uses' => 'JobsController@create']);
+    Route::post('inserir', ['as' => 'jobs.store', 'uses' => 'JobsController@store']);
+    Route::get('{id}/editar', ['as' => 'jobs.edit', 'uses' => 'JobsController@edit']);
+    Route::post('{id}/atualizar', ['as' => 'jobs.update', 'uses' => 'JobsController@update']);
+    Route::get('{id}/excluir', ['as' => 'jobs.destroy', 'uses' => 'JobsController@destroy']);
+});
 
 Route::get('/', function () {
     return redirect('jobs'); // REDIRECIONA E MANTEM O ENDERECO
