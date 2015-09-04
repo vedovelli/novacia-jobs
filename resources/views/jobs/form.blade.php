@@ -7,6 +7,7 @@
 <body>
 		<form action="/jobs/inserir" method="post">
 			<input type="hidden" name="id" >
+			<input type="hidden" name="_token" value="{!! csrf_token() !!}" >
 			<label for="nome">NOME</label>
 			<input type="text" value="" name="jobs_nome"> <br>
 			<label for="Reponsavel">REPONSAVEL</label>
