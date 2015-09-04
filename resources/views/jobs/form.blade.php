@@ -15,7 +15,7 @@
 			<label for="cliente">CLIENTE</label>
 			<input type="text" value="" name="jobs_cliente"> <br>
 
-			<input type="submit" value="Salvar" name="salvar">
+			<input type="submit" value="Salvar" >
 		</form>
 </body>
 </html>	

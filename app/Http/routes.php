@@ -29,5 +29,11 @@ Route::get('/jobs/novo', function () {
 
 Route::post('/jobs/inserir', function () {
 	$input = \Request::all();
-	dd("Qualquer coisa");
+	$job = new \App\Job;
+	$job->jobs_nome 		= $input["jobs_nome"];
+  	$job->jobs_reponsavel 	= $input["jobs_reponsavel"];
+  	$job->jobs_cliente		= $input["jobs_cliente"];
+
+  	$job->save(); // SALVA NO BD
+  	back();
 });
