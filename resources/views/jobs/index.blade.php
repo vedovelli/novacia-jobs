@@ -49,7 +49,7 @@
 			<td>{!! $job->jobs_responsavel !!} </td>
 			<td width="1%" nowrap>
 				<a href="/jobs/{!! $job->id !!}/editar">editar</a> |
-				<a href="/jobs/{!! $job->id !!}/excluir">excluir</a>
+				<a href="/jobs/{!! $job->id !!}/excluir" class="excluir-job">excluir</a>
 			</td>
 		</tr>
 	@endforeach
@@ -60,4 +60,22 @@
 <div class="text-center">
 	{!! $jobs->render() !!}
 </div>
+
+@stop
+
+@section('scripts')
+@parent
+<script>
+	$(document).ready(function()
+	{
+		$('body').on('click', '.excluir-job', function(ev)
+		{
+			var confirm = window.confirm('Tem certeza que deseja remover o job?');
+			if(!confirm)
+			{
+				ev.preventDefault();
+			}
+		});
+	});
+</script>
 @stop
