@@ -6,22 +6,7 @@
 
 @section('content')
 
-    {!! Form::model($job,
-        ['url' => '/jobs/'. $job->id .'/atualizar']) !!}
-
-        @if(Session::has('success'))
-            <div class="alert alert-success">{!! Session::get('success') !!}</div>
-        @endif
-
-        @if(Session::has('errors'))
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach($errors->all() as $error)
-                    <li>{!! $error !!}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+    {!! Form::model($job, ['url' => '/jobs/'. $job->id .'/atualizar']) !!}
 
         @include('jobs.partials.form')
 

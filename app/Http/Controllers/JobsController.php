@@ -15,7 +15,7 @@ class JobsController extends Controller
      */
     public function index()
     {
-        $jobs = \App\Job::all();
+        $jobs = \App\Job::paginate(10);
 
         return view('jobs.index')->with("jobs", $jobs); // NÃO SE USA BARRA PARA SEPARAR PASTA DE ARQUIVO
     }
@@ -38,13 +38,9 @@ class JobsController extends Controller
      */
     public function store(JobRequest $request)
     {
-        $input = $request->all();
-
         $job = new \App\Job;
 
-        $job->jobs_nome  = $input["jobs_nome"];
-        $job->jobs_responsavel = $input["jobs_responsavel"];
-        $job->jobs_cliente = $input["jobs_cliente"];
+        $job->fill($request->all());
 
         $job->save(); // SALVA NO BD
 
@@ -73,13 +69,9 @@ class JobsController extends Controller
      */
     public function update(JobRequest $request, $id)
     {
-        $input = $request->all();
-
         $job = \App\Job::find($id);
 
-        $job->jobs_nome  = $input["jobs_nome"];
-        $job->jobs_responsavel = $input["jobs_responsavel"];
-        $job->jobs_cliente = $input["jobs_cliente"];
+        $job->fill($request->all());
 
         $job->save();
 
@@ -95,6 +87,10 @@ class JobsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $job = \App\Job::find($id);
+
+        $job->delete();
+
+        return back()->with('success', 'Job removido com sucesso!');
     }
 }

@@ -6,6 +6,7 @@
 
 @section('content')
 
+
 <div class="row">
 	<div class="col-md-6">
 		<h2>Nova Cia <small>Controle de Jobs</small></h2>
@@ -14,6 +15,20 @@
 		<a href="/jobs/novo" class="btn btn-primary">Novo</a>
 	</div>
 </div>
+
+@if(Session::has('success'))
+    <div class="alert alert-success">{!! Session::get('success') !!}</div>
+@endif
+
+@if(Session::has('errors'))
+    <div class="alert alert-danger">
+        <ul>
+            @foreach($errors->all() as $error)
+            <li>{!! $error !!}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
 
 <table class="table table-bordered table-striped">
@@ -41,4 +56,8 @@
 	</tbody>
 
 </table>
+
+<div class="text-center">
+	{!! $jobs->render() !!}
+</div>
 @stop
