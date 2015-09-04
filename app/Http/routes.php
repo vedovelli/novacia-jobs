@@ -21,3 +21,13 @@ Route::get('/jobs', function () {
     return view('jobs.index')->with("jobs",$jobs); // NÃO SE USA BARRA PARA SEPARAR PASTA DE ARQUIVO 
     
 });
+
+Route::get('/jobs/novo', function () {
+
+    return view('jobs.form');
+});
+
+Route::post('/jobs/inserir', function () {
+	$input = \Request::all();
+	dd("Qualquer coisa");
+});
