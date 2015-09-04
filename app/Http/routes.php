@@ -12,14 +12,13 @@
 */
 
 Route::get('/', function () {
-    return redirect('jobs'); // REDIRECIONA E MANTEM O ENDERECO 
+    return redirect('jobs'); // REDIRECIONA E MANTEM O ENDERECO
 
 });
 
 Route::get('/jobs', function () {
     $jobs = \App\Job::all();
-    return view('jobs.index')->with("jobs",$jobs); // NÃO SE USA BARRA PARA SEPARAR PASTA DE ARQUIVO 
-    
+    return view('jobs.index')->with("jobs", $jobs); // NÃO SE USA BARRA PARA SEPARAR PASTA DE ARQUIVO
 });
 
 Route::get('/jobs/novo', function () {
@@ -28,12 +27,14 @@ Route::get('/jobs/novo', function () {
 });
 
 Route::post('/jobs/inserir', function () {
-	$input = \Request::all();
-	$job = new \App\Job;
-	$job->jobs_nome 		= $input["jobs_nome"];
-  	$job->jobs_reponsavel 	= $input["jobs_reponsavel"];
-  	$job->jobs_cliente		= $input["jobs_cliente"];
+    $input = \Request::all();
 
-  	$job->save(); // SALVA NO BD
-  	back();
+    $job = new \App\Job;
+
+    $job->jobs_nome  = $input["jobs_nome"];
+    $job->jobs_responsavel = $input["jobs_responsavel"];
+    $job->jobs_cliente = $input["jobs_cliente"];
+
+    $job->save(); // SALVA NO BD
+    return back()->with('success', 'Job incluido com sucesso!');
 });

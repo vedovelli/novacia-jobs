@@ -1,21 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Formulario Job</title>
-</head>
-<body>
-		<form action="/jobs/inserir" method="post">
-			<input type="hidden" name="id" >
-			<input type="hidden" name="_token" value="{!! csrf_token() !!}" >
-			<label for="nome">NOME</label>
-			<input type="text" value="" name="jobs_nome"> <br>
-			<label for="Reponsavel">REPONSAVEL</label>
-			<input type="text" value="" name="jobs_reponsavel"> <br>
-			<label for="cliente">CLIENTE</label>
-			<input type="text" value="" name="jobs_cliente"> <br>
+@extends('layouts.main')
 
-			<input type="submit" value="Salvar" >
-		</form>
-</body>
-</html>
+@section('pageTitle')
+- Jobs - Novo job
+@stop
+
+@section('content')
+
+	{!! Form::open(['url' => '/jobs/inserir']) !!}
+
+		@if(Session::has('success'))
+			<div class="alert alert-success">{!! Session::get('success') !!}</div>
+		@endif
+
+		<div class="form-group">
+		    {!! Form::label('jobs_nome', 'Nome do Job', ['class' => 'control-label']) !!}
+		    {!! Form::text('jobs_nome', null, ['class' => 'form-control', 'id' => 'jobs_nome']) !!}
+		</div>
+
+		<div class="form-group">
+		    {!! Form::label('jobs_responsavel', 'Responsavel', ['class' => 'control-label']) !!}
+		    {!! Form::text('jobs_responsavel', null, ['class' => 'form-control', 'id' => 'jobs_responsavel']) !!}
+		</div>
+
+		<div class="form-group">
+		    {!! Form::label('jobs_cliente', 'Cliente', ['class' => 'control-label']) !!}
+		    {!! Form::text('jobs_cliente', null, ['class' => 'form-control', 'id' => 'jobs_cliente']) !!}
+		</div>
+
+		<button class="btn btn-primary" type="submit">Salvar</button>
+
+	{!! Form::close() !!}
+
+	<a href="/jobs">voltar</a>
+@stop

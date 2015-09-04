@@ -1,39 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+@extends('layouts.main')
 
-</head>
-<body>
+@section('pageTitle')
+- Jobs
+@stop
 
-	<div class="container">
+@section('content')
 
+<div class="row">
+	<div class="col-md-6">
 		<h2>Nova Cia <small>Controle de Jobs</small></h2>
-
-		<table class="table table-bordered table-striped">
-			<thead>
-				<tr>
-					<th>Nome</th>
-					<th>Cliente</th>
-					<th>Reponsavel</th>
-				</tr>
-			</thead>
-
-			<tbody>
-			@foreach($jobs as $job)
-				<tr>
-					<td>{!! $job->jobs_nome !!}</td>
-					<td>{!! $job->jobs_cliente !!} </td>
-					<td>{!! $job->jobs_responsavel !!} </td>
-				</tr>
-			@endforeach
-			</tbody>
-
-		</table>
 	</div>
+	<div class="col-md-6 text-right">
+		<a href="/jobs/novo" class="btn btn-primary">Novo</a>
+	</div>
+</div>
 
-</body>
-</html>
+
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>Nome</th>
+			<th>Cliente</th>
+			<th>Reponsavel</th>
+		</tr>
+	</thead>
+
+	<tbody>
+	@foreach($jobs as $job)
+		<tr>
+			<td>{!! $job->jobs_nome !!}</td>
+			<td>{!! $job->jobs_cliente !!} </td>
+			<td>{!! $job->jobs_responsavel !!} </td>
+		</tr>
+	@endforeach
+	</tbody>
+
+</table>
+@stop
