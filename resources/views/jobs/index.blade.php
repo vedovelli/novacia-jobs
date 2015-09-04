@@ -22,6 +22,7 @@
 			<th>Nome</th>
 			<th>Cliente</th>
 			<th>Reponsavel</th>
+			<th>Ações</th>
 		</tr>
 	</thead>
 
@@ -31,6 +32,10 @@
 			<td>{!! $job->jobs_nome !!}</td>
 			<td>{!! $job->jobs_cliente !!} </td>
 			<td>{!! $job->jobs_responsavel !!} </td>
+			<td width="1%" nowrap>
+				<a href="/jobs/{!! $job->id !!}/editar">editar</a> |
+				<a href="/jobs/{!! $job->id !!}/excluir">excluir</a>
+			</td>
 		</tr>
 	@endforeach
 	</tbody>

@@ -27,7 +27,7 @@ class JobsController extends Controller
      */
     public function create()
     {
-        return view('jobs.form');
+        return view('jobs.create');
     }
 
     /**
@@ -59,7 +59,9 @@ class JobsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $job = \App\Job::find($id);
+
+        return view('jobs.edit')->with('job', $job);
     }
 
     /**
@@ -69,9 +71,20 @@ class JobsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(JobRequest $request, $id)
     {
-        //
+        $input = $request->all();
+
+        $job = \App\Job::find($id);
+
+        $job->jobs_nome  = $input["jobs_nome"];
+        $job->jobs_responsavel = $input["jobs_responsavel"];
+        $job->jobs_cliente = $input["jobs_cliente"];
+
+        $job->save();
+
+        return back()->with('success', 'Job atualizado com sucesso!');
+
     }
 
     /**
