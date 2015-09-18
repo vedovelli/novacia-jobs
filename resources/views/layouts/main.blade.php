@@ -9,7 +9,21 @@
 </head>
 <body>
 
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    SNJ
+                </a>
+                @if(Auth::user() != null)
+                <a href="/auth/logout" class="btn btn-default navbar-right">Sair</a>
+                @endif
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
+
     @yield('content')
     </div>
 

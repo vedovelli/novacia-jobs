@@ -6,7 +6,6 @@
 
 @section('content')
 
-
 <div class="row">
 	<div class="col-md-6">
 		<h2>Nova Cia <small>Controle de Jobs</small></h2>
