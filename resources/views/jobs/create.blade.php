@@ -6,6 +6,11 @@
 
 @section('content')
 
+    <h1>
+        <i class="fa fa-edit"></i>
+        Jobs
+    </h1>
+
     {!! Form::open(['url' => '/jobs/inserir']) !!}
 
         @include('jobs.partials.form')

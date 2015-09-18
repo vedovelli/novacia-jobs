@@ -6,6 +6,11 @@
 
 @section('content')
 
+<h1>
+    <i class="fa fa-edit"></i>
+    Jobs
+</h1>
+
 <div class="row">
 	<div class="col-md-6">
 		<h2>Nova Cia <small>Controle de Jobs</small></h2>
