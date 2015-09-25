@@ -50,7 +50,7 @@
 		<tr>
 			<td>{!! $job->jobs_nome !!}</td>
 			<td>{!! $job->jobs_cliente !!} </td>
-			<td>{!! $job->jobs_responsavel !!} </td>
+			<td>{!! $job->responsavel->name !!} </td>
 			<td width="1%" nowrap>
 				<a href="{!! route('jobs.edit', $job->id) !!}">editar</a> |
 				<a href="{!! route('jobs.destroy', $job->id) !!}" class="excluir-job">excluir</a>

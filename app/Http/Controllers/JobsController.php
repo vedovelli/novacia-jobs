@@ -15,7 +15,7 @@ class JobsController extends Controller
      */
     public function index()
     {
-        $jobs = \App\Job::paginate(10);
+        $jobs = \App\Job::with('responsavel')->paginate(10);
 
         return view('jobs.index')->with("jobs", $jobs); // NÃO SE USA BARRA PARA SEPARAR PASTA DE ARQUIVO
     }
@@ -27,7 +27,11 @@ class JobsController extends Controller
      */
     public function create()
     {
-        return view('jobs.create');
+        $users = \App\User::all();
+
+        $users = $users->lists('name', 'id');
+
+        return view('jobs.create')->with(compact('users'));
     }
 
     /**
@@ -40,7 +44,7 @@ class JobsController extends Controller
     {
         $job = new \App\Job;
 
-        $job->fill($request->all());
+        $job->fill($request->all()); // mass assignment
 
         $job->save(); // SALVA NO BD
 
@@ -55,9 +59,13 @@ class JobsController extends Controller
      */
     public function edit($id)
     {
-        $job = \App\Job::find($id);
+        $job = \App\Job::with('responsavel')->find($id);
 
-        return view('jobs.edit')->with('job', $job);
+        $users = \App\User::all();
+
+        $users = $users->lists('name', 'id');
+
+        return view('jobs.edit')->with(compact('job', 'users'));
     }
 
     /**

@@ -19,7 +19,7 @@
 
 <div class="form-group">
 {!! Form::label('jobs_responsavel', 'Responsavel', ['class' => 'control-label']) !!}
-{!! Form::text('jobs_responsavel', null, ['class' => 'form-control', 'id' => 'jobs_responsavel']) !!}
+{!! Form::select('user_id', ['' => ''] + $users->all(), null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">

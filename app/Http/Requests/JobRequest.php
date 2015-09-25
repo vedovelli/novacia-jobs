@@ -20,7 +20,7 @@ class JobRequest extends Request
     {
         return [
             'jobs_nome' => 'required|min:4',
-            'jobs_responsavel' => 'required',
+            'user_id' => 'required',
             'jobs_cliente' => 'required',
         ];
     }
@@ -30,7 +30,7 @@ class JobRequest extends Request
         return [
             'jobs_nome.required' => 'O campo nome é obrigatório',
             'jobs_nome.min' => 'O campo nome precisa ter pelo menos 4 caracteres',
-            'jobs_responsavel.required' => 'O campo responsável é obrigatório',
+            'user_id.required' => 'O campo responsável é obrigatório',
             'jobs_cliente.required' => 'O campo cliente é obrigatório',
         ];
     }
